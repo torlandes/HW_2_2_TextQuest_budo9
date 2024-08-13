@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TextQuest : MonoBehaviour
@@ -33,18 +32,21 @@ public class TextQuest : MonoBehaviour
             {
                 TryGoToNextStep(i);
             }
-            else if (_currentStep.isWin && Input.GetKeyDown(KeyCode.Space))
+            else if (_currentStep.IsWin && Input.GetKeyDown(KeyCode.Space))
             {
-                Start();
+                Restart();
             }
         }
-
-        
     }
 
     #endregion
 
     #region Private methods
+
+    private void Restart()
+    {
+        SetCurrentStepAndUpdateUi(_startStep);
+    }
 
     private void SetCurrentStepAndUpdateUi(Step step)
     {
