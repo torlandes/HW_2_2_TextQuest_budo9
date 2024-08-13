@@ -35,9 +35,7 @@ public class TextQuest : MonoBehaviour
             }
             else if (_currentStep.isWin && Input.GetKeyDown(KeyCode.Space))
             {
-                _descriptionLabel.text = "GAME OVER";
-                _answerLabel.text = string.Empty;
-                _locationLabel.text = "Square Place";
+                Start();
             }
         }
 
