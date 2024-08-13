@@ -13,7 +13,7 @@ public class TextQuest : MonoBehaviour
 
     [SerializeField] private Step _startStep;
     [SerializeField] private Step _currentStep;
-    
+
     [SerializeField] private Image _currentLocationImage;
 
     #endregion
@@ -33,11 +33,15 @@ public class TextQuest : MonoBehaviour
             {
                 TryGoToNextStep(i);
             }
+            else if (_currentStep.isWin && Input.GetKeyDown(KeyCode.Space))
+            {
+                _descriptionLabel.text = "GAME OVER";
+                _answerLabel.text = string.Empty;
+                _locationLabel.text = "Square Place";
+            }
         }
-        if (_currentStep.isWin && Input.GetKeyDown(KeyCode.Space))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+
+        
     }
 
     #endregion
@@ -47,7 +51,6 @@ public class TextQuest : MonoBehaviour
     private void SetCurrentStepAndUpdateUi(Step step)
     {
         _currentStep = step;
-
         UpdateUi();
     }
 
